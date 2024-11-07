@@ -17,7 +17,6 @@ int encodeShellString(char* dest, size_t destSize, const char* src) {
         } else {
            return -1;
         }
-     return 
     }
     dest[j] = '\0';  // Null-terminate the encoded string
     return 0
@@ -33,7 +32,7 @@ int main(int argc, char** argv) {
 
     // Encode the user-supplied file path
     char encodedPath[BUFSIZE];
-    if (encodeShellString(encodedPath, BUFSIZE, argv[1]); != 0) {
+    if (encodeShellString(encodedPath, BUFSIZE, argv[1]) != 0) {
         return -1;  // Exit if an invalid character was found
     }
    
