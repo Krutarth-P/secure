@@ -5,7 +5,7 @@
 #define BUFSIZE 256
 
 // Function to encode the file path for safe shell use
-void encodeShellString(char* dest, size_t destSize, const char* src) {
+int encodeShellString(char* dest, size_t destSize, const char* src) {
     size_t j = 0;
     for (size_t i = 0; src[i] != '\0' && j < destSize - 1; i++) {
         // Allow only alphanumeric characters, dot, dash, underscore, and slash
@@ -15,10 +15,12 @@ void encodeShellString(char* dest, size_t destSize, const char* src) {
             src[i] == '.' || src[i] == '-' || src[i] == '_' || src[i] == '/') {
             dest[j++] = src[i];
         } else {
-           return;
+           return -1;
         }
+     return 
     }
     dest[j] = '\0';  // Null-terminate the encoded string
+    return 0
 }
 
 // This program prints the size of a specified file in bytes
@@ -31,7 +33,10 @@ int main(int argc, char** argv) {
 
     // Encode the user-supplied file path
     char encodedPath[BUFSIZE];
-    encodeShellString(encodedPath, BUFSIZE, argv[1]);
+    if (encodeShellString(encodedPath, BUFSIZE, argv[1]); != 0) {
+        return -1;  // Exit if an invalid character was found
+    }
+   
 
     // Format the command string safely
     char cmd[BUFSIZE];
