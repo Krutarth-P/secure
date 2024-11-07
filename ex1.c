@@ -29,11 +29,6 @@ int main(int argc, char** argv) {
         return -1;
     }
 
-    // Validate the file path
-    if (validate_path(argv[1]) != 0) {
-        return -1;  // Exit if an invalid character was found
-    }
-
     // Encode the user-supplied file path
     char encodedPath[BUFSIZE];
     encodeShellString(encodedPath, BUFSIZE, argv[1]);
