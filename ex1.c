@@ -35,11 +35,11 @@ int main(int argc, char** argv) {
     }
 
     // Encode the user-supplied file path
-    char encodedPath[BUFSIZE] = {0};
+    char encodedPath[BUFSIZE];
     encodeShellString(encodedPath, BUFSIZE, argv[1]);
 
     // Format the command string safely
-    char cmd[BUFSIZE] = {0};
+    char cmd[BUFSIZE];
     snprintf(cmd, BUFSIZE, "wc -c < %s", encodedPath);
     system(cmd);
 }
