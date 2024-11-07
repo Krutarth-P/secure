@@ -19,7 +19,7 @@ int encodeShellString(char* dest, size_t destSize, const char* src) {
         }
     }
     dest[j] = '\0';  // Null-terminate the encoded string
-    return 0
+    return 0;
 }
 
 // This program prints the size of a specified file in bytes
